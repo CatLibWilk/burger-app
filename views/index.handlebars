@@ -1,0 +1,58 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Burgers From Around The World</h1>
+    <p class="lead">Every burger under the sun.</p>
+  </div>
+</div>
+
+
+<div class="container-fluid mx-auto">
+<div class="row ml-3 mr-3">
+  <div id="not-eaten-div" class="col-6 bg-light float-left p-4 mr-auto">
+    <h2>Hot and Tasty and Ready to Devour!</h2>
+
+    <div class="card justify-content-center">
+      <ul class="list-group list-group-flush">
+          {{#each burgers}}
+            {{#unless devoured}}
+              <li class="list-group-item mt-2">{{burger_name}}</li>
+              <button burger-id={{id}} data-devstat={{devoured}} class="btn btn-primary devour-btn">Snap it Up!</button>
+            {{/unless}}
+          {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div id="eaten-div" class="col-6 bg-light float-left p-4 ml-auto">
+    <h2>Already eaten</h2>
+        <div class="card justify-content-center">
+            <ul class="list-group list-group-flush">
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <li class="list-group-item">{{burger_name}}</li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+  </div><!--row end-->
+
+  <div class="row">
+    <div class="col-12 justify-content-center mt-5 mb-5">
+        <h2>Add a Burger</h2>
+        <form class="create-form">
+          <div class="form-group">
+            <label for="burger-label">Add Burger</label>
+            <input type="input" class="form-control mb-3" id="burger-input" placeholder="Chinese Hamburger">
+            <button type="submit" class="btn btn-warning">Add Burger</button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mt-1 mb-1">
+      <div id="clear-btn" class="btn btn-success col-12">Clear Tables</div>
+    </div><!--delete col end-->
+  </div> <!--delete row end-->
+</div><!--fluid container end-->
